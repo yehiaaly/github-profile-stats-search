@@ -55,6 +55,12 @@ const GithubProfileFinder = () => {
   }, []);
 
   useEffect(() => {
+    if (!userName.trim()) {
+      setLoading(false);
+      return;
+    }
+
+    setLoading(true);
     const searchDelay = setTimeout(() => {
       fetchUser(userName);
     }, 500);
@@ -100,7 +106,7 @@ const GithubProfileFinder = () => {
             />
           </form>
 
-          {loading ? (
+          {userName === "" ? null : loading ? (
             <div className="animate-in fade-in duration-300">
               <Item
                 variant="muted"
@@ -245,7 +251,7 @@ const GithubProfileFinder = () => {
                 </Button>
               </div>
             </div>
-          ) : !loading && userData === null && userName !== "" ? (
+          ) : !loading && userData === null ? (
             <div className="space-y-2 py-12 text-center">
               <p className="text-muted-foreground text-lg font-medium">
                 User not found
