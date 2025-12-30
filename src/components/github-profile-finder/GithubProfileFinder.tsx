@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 
 const GithubProfileFinder = () => {
-  const [userName, setUserName] = useState("yehiaaly");
+  const [userName, setUserName] = useState("");
   const [userData, setUserData] = useState<GitHubUser | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -55,7 +55,10 @@ const GithubProfileFinder = () => {
   }, []);
 
   useEffect(() => {
-    fetchUser(userName);
+    const searchDelay = setTimeout(() => {
+      fetchUser(userName);
+    }, 500);
+    return () => clearTimeout(searchDelay);
   }, [fetchUser, userName]);
 
   const formatDate = (dateString: string) => {
@@ -92,12 +95,9 @@ const GithubProfileFinder = () => {
               value={userName}
               className="flex-1"
               type="text"
-              placeholder="Search username... (e.g. yehiaaly)"
+              placeholder="Type to search a username... (e.g. yehiaaly)"
               required
             />
-            <Button type="submit" disabled={loading} className="px-6">
-              {loading ? "Searching..." : "Search"}
-            </Button>
           </form>
 
           {loading ? (
@@ -245,7 +245,7 @@ const GithubProfileFinder = () => {
                 </Button>
               </div>
             </div>
-          ) : !loading && userData === null ? (
+          ) : !loading && userData === null && userName !== "" ? (
             <div className="space-y-2 py-12 text-center">
               <p className="text-muted-foreground text-lg font-medium">
                 User not found
