@@ -1,73 +1,88 @@
-# React + TypeScript + Vite
+# 🔍 GitHub Profile Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek and interactive React application that allows users to search for GitHub profiles and view detailed statistics, repositories, and social links using the GitHub API.
 
-Currently, two official plugins are available:
+![Preview](./public/preview.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
 
-## React Compiler
+Check out the live demo here: [https://github-profile-stats-search.pages.dev/](https://github-profile-stats-search.pages.dev/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 🔍 **Real-time Search**: Instant profile fetching using the GitHub REST API.
+- 📊 **Comprehensive Stats**: View repositories, followers, following, and gists at a glance.
+- 🕒 **Join Date Tracking**: Automatically formats and displays the profile creation date.
+- 📱 **Responsive Design**: Fully optimized for mobile, tablet, and desktop views.
+- ✨ **Modern UI/UX**: Built with **Tailwind CSS** and **Shadcn UI** for a premium look and feel.
+- 🎭 **Smooth Animations**: Integrated entry animations for a dynamic user experience.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Built With
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **React 19**
+- **Vite**
+- **TypeScript**
+- **Tailwind CSS**
+- **Shadcn UI**
+- **Lucide React Icons**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📦 Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/yehiaaly/github-profile-stats-search.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### 3. Run the development server
+
+```bash
+npm run dev
+```
+
+## 📖 Documentation
+
+### Usage Example
+
+```tsx
+import GithubProfileFinder from "./components/github-profile-finder/GithubProfileFinder";
+
+const App = () => {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-gray-50">
+      <GithubProfileFinder />
+    </div>
+  );
+};
+
+export default App;
+```
+
+### Prop Documentation
+
+The `GithubProfileFinder` component is a standalone feature and does not currently accept external props as it manages its own state for searching and displaying data.
+
+### Project Structure
+
+```text
+src/
+├── components/
+│   ├── github-profile-finder/
+│   │   └── GithubProfileFinder.tsx
+│   └── ui/                   # Shadcn UI base components
+├── types/
+│   └── github-user.ts        # TypeScript interfaces
+├── App.tsx
+├── main.tsx
+└── index.css
+```
+
+---
+
+Developed with ❤️ by [Yehia Aly](https://github.com/yehiaaly)
